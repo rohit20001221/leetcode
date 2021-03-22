@@ -40,5 +40,5 @@ def merge(arr1, arr2):
     return result
 
 
-
-print(merge_sort([1,9,2,8,3,7,4,6,5]))
+if __name__ == "__main__":
+    print(merge_sort([1,9,2,8,3,7,4,6,5]))
