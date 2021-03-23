@@ -1,26 +1,24 @@
-def qsort(arr):
-    qsortHelper(arr, 0, len(arr)-1)
+def quicksort_(arr, l, h):
+    if l < h:
+        p = partition(arr, l, h)
+        quicksort_(arr, l, p-1)
+        quicksort_(arr, p+1, h)
 
-def qsortHelper(arr, l, r):
-    if(l < r):
-        pIndex = partition(arr, l, r)
-        qsortHelper(arr, l, pIndex-1)
-        qsortHelper(arr, pIndex+1, r)
+def partition(arr, l, h):
+    pivot = arr[h]
+    i = l
 
-def partition(arr, l, r):
-    pivot = arr[r]
-    pIndex = l
+    for j in range(l, h+1):
+        if arr[j] < pivot:
+            arr[j], arr[i] = arr[i], arr[j]
+            i += 1
+    arr[i], arr[h] = arr[h], arr[i]
+    return i
 
-    for i in range(l, r):
-        if(arr[i] <= pivot):
-            arr[i], arr[pIndex] = arr[pIndex], arr[i]
-            pIndex += 1
-    
-    arr[pIndex], arr[r] = arr[r], arr[pIndex]
-    return pIndex
+def quicksort(arr):
+    quicksort_(arr, 0, len(arr)-1)
 
-arr = [1,6,2,5,3,4]
-
-qsort(arr)
-
-print(arr)
+if __name__ == '__main__':
+    arr = [1,0,2,9,3,8,4,7,5,6]
+    quicksort(arr)
+    print(arr)
