@@ -1,20 +1,17 @@
 from collections import deque
 
-def BFS(root, target):
-    queue = deque([root])
-    step = 0
+def BFS(root, goal):
+    Q = deque([root])
+    visited = [root]
 
-    while(queue):
-        step += 1
-        size = len(queue)
+    while !(Q.empty()):
+        v = Q.popleft()
+        if v is goal:
+            return v
+        
+        for v_ in v.neighbours():
+            if v_ not in visited:
+                visited.append(v_)
+                q.append(v_)
 
-        for i in range(size):
-            cur = queue.popleft()
 
-            if cur == target:
-                return step
-            
-            for next_ in cur.neighbours():
-                queue.append(next_)
-            
-    return -1
