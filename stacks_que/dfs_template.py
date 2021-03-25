@@ -15,3 +15,4 @@ def DSF(v, visited):
             visited[v_] = True
             for neighbour in v_.neighbours():
                 stack.push(neighbour)
+                
